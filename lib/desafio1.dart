@@ -1,5 +1,3 @@
-import 'dart:math';
-
 void main() {
   final pacientes = [
     'Rodrigo Rahman|35|desenvolvedor|SP',
@@ -13,19 +11,27 @@ void main() {
   ];
 
   //! 2 - Apresente quantos pacientes existem para cada profissão (desenvolvedor, estudante, dentista, jornalista)
-  print('# PACIENTES POR PROFISSÃO:');
+  // print('# PACIENTES POR PROFISSÃO:');
   List<String> listaProfissoes = [];
   for (var p in pacientes) {
     var info = p.split('|');
     if (!listaProfissoes.contains(info[2].toLowerCase())) {
-      listaProfissoes.add(info[2]);
+      listaProfissoes.add(info[2].toLowerCase());
     }
   }
 
-  for (var element in listaProfissoes) {
-    print(element);
+  for (var profissao in listaProfissoes) {
+    print('#           ${profissao.toUpperCase()}           #');
+    for (var paciente in pacientes) {
+      var info = paciente.split('|');
+      if (profissao.toLowerCase() == info[2].toLowerCase()) {
+        print(
+            '${info[0].toUpperCase()}, IDADE: ${info[1]}, MORA EM: ${info[3]}');
+      }
+    }
+    print('\n');
   }
-
+  
   //! 3 - Apresente a quantidade de pacientes que moram em SP
   // print('# PACIENTES QUE MORAM EM SP:');
   // for (var p in pacientes) {
